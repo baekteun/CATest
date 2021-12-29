@@ -79,7 +79,7 @@ private extension BeerListReactor{
                 print($0.localizedDescription)
                 self.steps.accept(CAStep.alert(title: "BeerList", message: "아이템을 불러오는데 실패했습니다."))
             })
-            .map { .setBeers($0.1) }
+            .map { .setBeers(self.currentState.beers + $0.1) }
             
             
             

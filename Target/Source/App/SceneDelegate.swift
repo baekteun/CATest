@@ -1,6 +1,7 @@
 import UIKit
 import RxSwift
 import RxFlow
+import Kingfisher
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -40,7 +41,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
-        
+        KingfisherManager.shared.cache.clearMemoryCache()
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
