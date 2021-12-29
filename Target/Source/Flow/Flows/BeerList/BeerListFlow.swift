@@ -50,9 +50,7 @@ private extension BeerListFlow{
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
     func navigateToAlert(title: String?, message: String?) -> FlowContributors{
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(.init(title: "확인", style: .default))
-        self.rootVC.present(alert, animated: true)
+        self.rootVC.showDefaultAlert(title: title, message: message)
         return .none
     }
 }
