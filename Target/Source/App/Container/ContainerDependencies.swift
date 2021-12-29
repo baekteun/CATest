@@ -32,9 +32,9 @@ extension Container{
         autoregister(BeerListStepper.self, initializer: BeerListStepper.init)
     }
     private func registerRepository(){
-        
+        autoregister(BeerListRepository.self, initializer: DefaultBeerListRepository.init)
     }
     private func registerUsecase(){
-        
+        autoregister(BeerListUseCase.self, initializer: DefaultBeerListUseCase.init)
     }
 }
