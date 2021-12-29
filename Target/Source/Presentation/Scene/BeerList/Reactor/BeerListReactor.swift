@@ -9,10 +9,14 @@ final class BeerListReactor: Reactor, Stepper{
     
     private let disposeBag = DisposeBag()
     
+    private var page = 1
+    
+    @Inject private var beerListUseCase: BeerListUseCase
+    
     // MARK: - Reactor
     enum Action{
         case viewDidLoad
-        case loadMoreData
+        case fetchMoreBeer
     }
     enum Mutation{
         case setBeers([Beer])
@@ -31,8 +35,8 @@ extension BeerListReactor{
         switch action{
         case .viewDidLoad:
             return fetchBeer()
-        case .loadMoreData:
-            return loadMoreData()
+        case .fetchMoreBeer:
+            return loadMoreBeer()
         }
     }
 }
@@ -53,13 +57,23 @@ extension BeerListReactor{
 // MARK: - Method
 private extension BeerListReactor{
     func fetchBeer() -> Observable<Mutation>{
-        return .just(.setBeers([
-            Beer(id: 1, name: "a", description: "a", imageUrl: ""),
-            Beer(id: 2, name: "b", description: "b", imageUrl: "")
-        ]))
+        return beerListUseCase.execute(page: self.page)
+            .asObservable()
+            .map { .setBeers($0) }
     }
-    func loadMoreData() -> Observable<Mutation>{
-        
-        return .empty()
+    func loadMoreBeer() -> Observable<Mutation>{
+        self.page += 1
+        return beerListUseCase.execute(page: self.page)
+            .asObservable()
+            .withUnretained(self)
+            .do(onError: {
+                print($0.localizedDescription)
+                self.steps.accept(CAStep.alert(title: "BeerList", message: "아이템을 불러오는데 실패했습니다."))
+            })
+            .map { .setBeers($0.1) }
+            
+            
+            
+            
     }
 }
