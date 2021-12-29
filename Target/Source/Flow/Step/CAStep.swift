@@ -18,4 +18,8 @@ enum CAStep: Step{
     
     case beerListIsRequired
     case beerDetailIsRequired
+    
+    case beerIDSearchIsRequired
+    
+    case randomBeerIsRequired
 }
