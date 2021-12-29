@@ -36,7 +36,7 @@ extension BeerListReactor{
         case .viewDidLoad:
             return fetchBeer()
         case .fetchMoreBeer:
-            return loadMoreBeer()
+            return fetchMoreBeer()
         }
     }
 }
@@ -59,9 +59,14 @@ private extension BeerListReactor{
     func fetchBeer() -> Observable<Mutation>{
         return beerListUseCase.execute(page: self.page)
             .asObservable()
-            .map { .setBeers($0) }
+            .withUnretained(self)
+            .do(onError: {
+                print($0.localizedDescription)
+                self.steps.accept(CAStep.alert(title: "BeerList", message: "아이템을 불러오는데 실패했습니다."))
+            })
+            .map { .setBeers($0.1) }
     }
-    func loadMoreBeer() -> Observable<Mutation>{
+    func fetchMoreBeer() -> Observable<Mutation>{
         self.page += 1
         return beerListUseCase.execute(page: self.page)
             .asObservable()

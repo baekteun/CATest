@@ -40,9 +40,8 @@ final class BeerListVC: baseVC<BeerListReactor>{
     }
     override func bindView(reactor: BeerListReactor) {
         tableView.refreshControl?.rx.controlEvent(.valueChanged)
-            .subscribe(onNext: { _ in
-                print("asdf")
-            })
+            .map { Reactor.Action.fetchMoreBeer }
+            .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
     }
