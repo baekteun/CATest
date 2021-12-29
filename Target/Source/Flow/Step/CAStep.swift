@@ -13,11 +13,12 @@ enum CAStep: Step{
     case alert(title: String?, message: String)
     case dismiss
     
-    // Main
+    // Main Tabbar
     case mainTabbarIsRequired
     
+    // BeerList
     case beerListIsRequired
-    case beerDetailIsRequired(withID: Int)
+    case beerDetailIsRequired(beer: Beer)
     
     case beerIDSearchIsRequired
     

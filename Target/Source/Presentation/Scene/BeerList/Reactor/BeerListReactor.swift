@@ -18,6 +18,7 @@ final class BeerListReactor: Reactor, Stepper{
         case viewDidLoad
         case refreshTrigger
         case fetchMoreBeer
+        case beerDetailDidTap(Beer)
     }
     enum Mutation{
         case setBeers([Beer])
@@ -40,6 +41,9 @@ extension BeerListReactor{
             return fetchBeer()
         case .fetchMoreBeer:
             return fetchMoreBeer()
+        case let .beerDetailDidTap(beer):
+            steps.accept(CAStep.beerDetailIsRequired(beer: beer))
+            return .empty()
         }
     }
 }
