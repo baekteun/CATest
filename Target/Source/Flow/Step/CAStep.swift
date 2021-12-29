@@ -17,4 +17,5 @@ enum CAStep: Step{
     case mainTabbarIsRequired
     
     case beerListIsRequired
+    case beerDetailIsRequired
 }
