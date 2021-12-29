@@ -14,7 +14,9 @@ struct AppStepper: Stepper{
     private let disposeBag: DisposeBag = .init()
     
     func readyToEmitSteps() {
-        
+        Observable.just(CAStep.mainTabbarIsRequired)
+            .bind(to: steps)
+            .disposed(by: disposeBag)
     }
 }
 
@@ -42,9 +44,11 @@ final class AppFlow: Flow{
     // MARK: - Navigate
     
     func navigate(to step: Step) -> FlowContributors {
-        
+        guard let step = step.asCAStep else { return .none }
         
         switch step{
+        case .mainTabbarIsRequired:
+            return coordinateToTabbar()
         default:
             return .none
         }
@@ -54,5 +58,17 @@ final class AppFlow: Flow{
 // MARK: - Method
 
 private extension AppFlow{
+    func coordinateToTabbar() -> FlowContributors{
+        let tabbar = TabbarFlow()
+        
+        Flows.use(
+            tabbar,
+            when: .created
+        ) { [unowned self] root in
+            self.rootWindow.rootViewController = root
+        }
+        
+        return .one(flowContributor: .contribute(withNextPresentable: tabbar, withNextStepper: OneStepper(withSingleStep: CAStep.mainTabbarIsRequired)))
+    }
 }
 

@@ -13,6 +13,8 @@ extension Container{
     func registerDependencies(){
         registerVC()
         registerReactor()
+        registerFlow()
+        registerStepper()
         registerRepository()
         registerUsecase()
     }

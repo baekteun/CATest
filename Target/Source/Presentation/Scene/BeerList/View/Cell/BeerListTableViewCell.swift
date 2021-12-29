@@ -47,7 +47,8 @@ final class BeerListTableViewCell: BaseTableViewCell<Beer>{
     }
     override func setLayout() {
         cellStack.snp.makeConstraints {
-            $0.leading.trailing.top.bottom.equalToSuperview().inset(5)
+            $0.leading.trailing.top.equalToSuperview().inset(5)
+            $0.bottom.equalToSuperview().inset(5).priority(.high)
         }
     }
     override func configureCell() {
@@ -58,7 +59,7 @@ final class BeerListTableViewCell: BaseTableViewCell<Beer>{
         beerNameLabel.text = model.name
         beerDescription.text = model.description
         beerImageView.kf.setImage(with: URL(string: model.imageUrl) ?? .none,
-                                  placeholder: nil,
+                                  placeholder: UIImage(),
                                   options: [.cacheMemoryOnly])
     }
     
