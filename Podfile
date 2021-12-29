@@ -21,6 +21,7 @@ target 'CATest' do
   pod 'SnapKit', '~> 5.0.0'
   pod 'Swinject', '~> 2.7'
   pod 'SwinjectAutoregistration', '~> 2.7'
+  pod 'Kingfisher', '~> 7.1.2'
 
   # Network
   pod 'Moya/RxSwift', '~> 15.0.0'

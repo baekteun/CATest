@@ -12,7 +12,9 @@ class BaseTableViewCell<T> : UITableViewCell{
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configure()
+        addView()
+        setLayout()
+        configureCell()
     }
     
     @available(*, unavailable)
@@ -25,9 +27,9 @@ class BaseTableViewCell<T> : UITableViewCell{
     }
     func reuse(){ }
     
-    func configure() {
-        selectionStyle = .none
-    }
+    func addView(){}
+    func setLayout(){}
+    func configureCell(){}
     var model: T? {
         didSet { if let model = model { bind(model) } }
     }

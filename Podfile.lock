@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (5.4.4)
   - Differentiator (5.0.0)
+  - Kingfisher (7.1.2)
   - Moya/Core (15.0.0):
     - Alamofire (~> 5.0)
   - Moya/RxSwift (15.0.0):
@@ -33,6 +34,7 @@ PODS:
   - WeakMapTable (1.2.0)
 
 DEPENDENCIES:
+  - Kingfisher (~> 7.1.2)
   - Moya/RxSwift (~> 15.0.0)
   - ReactorKit (~> 3.1.0)
   - RxCocoa (~> 6.2.0)
@@ -49,6 +51,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - Differentiator
+    - Kingfisher
     - Moya
     - ReactorKit
     - RxCocoa
@@ -66,6 +69,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
+  Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   ReactorKit: a06dd2a5c9339287aedf3dc821cfab6347eca106
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
@@ -80,6 +84,6 @@ SPEC CHECKSUMS:
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: 850dfc65017a68e1ec692b8f81a7ef2be441f2e1
+PODFILE CHECKSUM: 56eb8574f451e5548f02f0e7c853c20ad9f4f150
 
 COCOAPODS: 1.11.2
