@@ -35,6 +35,8 @@ final class BeerListFlow: Flow{
         switch step{
         case .beerListIsRequired:
             return coordinateToBeerList()
+        case let .alert(title, message):
+            return navigateToAlert(title: title, message: message)
         default:
             return .none
         }
@@ -46,5 +48,11 @@ private extension BeerListFlow{
     func coordinateToBeerList() -> FlowContributors{
         self.rootVC.setViewControllers([vc], animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
+    }
+    func navigateToAlert(title: String?, message: String?) -> FlowContributors{
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(.init(title: "확인", style: .default))
+        self.rootVC.present(alert, animated: true)
+        return .none
     }
 }
