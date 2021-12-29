@@ -39,11 +39,15 @@ final class BeerListVC: baseVC<BeerListReactor>{
             .disposed(by: disposeBag)
     }
     override func bindView(reactor: BeerListReactor) {
-        tableView.refreshControl?.rx.controlEvent(.valueChanged)
-            .map { Reactor.Action.fetchMoreBeer }
+        tableView.rx.reachedBottom(offset: 120)
+            .map { _ in Reactor.Action.fetchMoreBeer }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-        
+            
+        tableView.refreshControl?.rx.controlEvent(.valueChanged)
+            .map { _ in Reactor.Action.refreshTrigger }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
     override func bindState(reactor: BeerListReactor) {
         let sharedState = reactor.state.share(replay: 1).observe(on: MainScheduler.asyncInstance)

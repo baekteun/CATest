@@ -16,6 +16,7 @@ final class BeerListReactor: Reactor, Stepper{
     // MARK: - Reactor
     enum Action{
         case viewDidLoad
+        case refreshTrigger
         case fetchMoreBeer
     }
     enum Mutation{
@@ -34,6 +35,8 @@ extension BeerListReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
         case .viewDidLoad:
+            return fetchBeer()
+        case .refreshTrigger:
             return fetchBeer()
         case .fetchMoreBeer:
             return fetchMoreBeer()
@@ -57,6 +60,7 @@ extension BeerListReactor{
 // MARK: - Method
 private extension BeerListReactor{
     func fetchBeer() -> Observable<Mutation>{
+        self.page = 1
         return beerListUseCase.execute(page: self.page)
             .asObservable()
             .withUnretained(self)
