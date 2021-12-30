@@ -22,17 +22,11 @@ final class BeerSearchFlow: Flow{
     var root: Presentable{
         return self.rootVC
     }
-    
-    let stepper: BeerSearchStepper
+    @Inject private var vc: BeerSearchVC
+    @Inject var stepper: BeerSearchStepper
     private let rootVC = UINavigationController()
     
     // MARK: - Init
-    init(
-        with stepper: BeerSearchStepper
-    ){
-        self.stepper = stepper
-    }
-    
     deinit {
         print("\(type(of: self)): \(#function)")
     }
@@ -41,7 +35,8 @@ final class BeerSearchFlow: Flow{
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step.asCAStep else { return .none }
         switch step{
-            
+        case .beerIDSearchIsRequired:
+            return coordinateToBeerSearch()
         default:
             return .none
         }
@@ -50,5 +45,8 @@ final class BeerSearchFlow: Flow{
 
 // MARK: - Method
 private extension BeerSearchFlow{
-    
+    func coordinateToBeerSearch() -> FlowContributors{
+        self.rootVC.setViewControllers([vc], animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: vc.reactor))
+    }
 }
