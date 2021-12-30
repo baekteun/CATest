@@ -27,6 +27,7 @@ final class BeerView: UIView{
     
     private let beerNameLabel = UILabel().then {
         $0.textColor = .black
+        $0.text = "Please Search Beer by id"
     }
     
     private let beerDescriptionLabel = UILabel().then {

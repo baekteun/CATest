@@ -10,6 +10,7 @@ import UIKit
 
 final class BeerSearchVC: baseVC<BeerSearchReactor>{
     // MARK: - Properties
+    private let beerView = BeerView()
     private let searchController = UISearchController(searchResultsController: nil)
     
 }
