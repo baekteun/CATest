@@ -19,10 +19,16 @@ final class BeerSearchReactor: Reactor, Stepper{
     
     // MARK: - Reactor
     enum Action{
+        case searchBeer(Int)
     }
     enum Mutation{
+        case setBeer(Beer)
+        case setError(Error)
+        case setLoading(Bool)
     }
     struct State{
+        var isLoading = false
+        var beer: Beer = .init(id: 0, name: "", description: "", imageUrl: "")
     }
     
     var initialState: State = State()
@@ -32,7 +38,10 @@ final class BeerSearchReactor: Reactor, Stepper{
 // MARK: - Mutate
 extension BeerSearchReactor{
     func mutate(action: Action) -> Observable<Mutation> {
-        
+        switch action{
+        case let .searchBeer(id):
+            return searchBeer(id: id)
+        }
     }
 }
 
@@ -41,7 +50,12 @@ extension BeerSearchReactor{
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         switch mutation {
-            
+        case let .setBeer(beer):
+            newState.beer = beer
+        case let .setLoading(isLoading):
+            newState.isLoading = isLoading
+        case let .setError(err):
+            self.steps.accept(CAStep.alert(title: "Beer", message: err.localizedDescription))
         }
         return newState
     }
@@ -50,5 +64,10 @@ extension BeerSearchReactor{
 
 // MARK: - Method
 private extension BeerSearchReactor{
-    
+    func searchBeer(id: Int) -> Observable<Mutation>{
+        let startLoading: Observable<Mutation> = .just(.setLoading(true))
+        let beer: Observable<Mutation> = .empty()
+        let endLoading: Observable<Mutation> = .just(.setLoading(false))
+        return .concat([startLoading, beer, endLoading])
+    }
 }
