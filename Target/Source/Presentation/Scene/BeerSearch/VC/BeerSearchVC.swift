@@ -57,6 +57,12 @@ final class BeerSearchVC: baseVC<BeerSearchReactor>{
             .map { Reactor.Action.searchBeer($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+        
+        searchController.searchBar.rx.searchButtonClicked
+            .subscribe(onNext: {
+                self.searchController.dismiss(animated: true)
+            })
+            .disposed(by: disposeBag)
     }
     
     override func bindState(reactor: BeerSearchReactor) {
