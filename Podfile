@@ -11,6 +11,7 @@ target 'CATest' do
   pod 'RxCocoa', '~> 6.2.0'
   pod 'RxViewController', '~> 2.0.0'
   pod 'RxDataSources', '~> 5.0'
+  pod 'RxSwiftExt', '~> 6.0.1'
 
   # Rx Framework
   pod 'ReactorKit', '~> 3.1.0'

@@ -23,6 +23,14 @@ PODS:
   - RxRelay (6.2.0):
     - RxSwift (= 6.2.0)
   - RxSwift (6.2.0)
+  - RxSwiftExt (6.0.1):
+    - RxSwiftExt/Core (= 6.0.1)
+    - RxSwiftExt/RxCocoa (= 6.0.1)
+  - RxSwiftExt/Core (6.0.1):
+    - RxSwift (~> 6.0)
+  - RxSwiftExt/RxCocoa (6.0.1):
+    - RxCocoa (~> 6.0)
+    - RxSwiftExt/Core
   - RxViewController (2.0.0):
     - RxCocoa (~> 6.0)
     - RxSwift (~> 6.0)
@@ -41,6 +49,7 @@ DEPENDENCIES:
   - RxDataSources (~> 5.0)
   - RxFlow (~> 2.12.4)
   - RxSwift (~> 6.2.0)
+  - RxSwiftExt
   - RxViewController (~> 2.0.0)
   - SnapKit (~> 5.0.0)
   - Swinject (~> 2.7)
@@ -59,6 +68,7 @@ SPEC REPOS:
     - RxFlow
     - RxRelay
     - RxSwift
+    - RxSwiftExt
     - RxViewController
     - SnapKit
     - Swinject
@@ -77,6 +87,7 @@ SPEC CHECKSUMS:
   RxFlow: 03a73c83fb8f183107074b40ab2544c668583f73
   RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
+  RxSwiftExt: d61c4b9b06e0a448041b1c659e0f1b5c5a035afc
   RxViewController: 56486fa0afd629a1d6b5ba077f3b8cd9dc31b5d2
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
@@ -84,6 +95,6 @@ SPEC CHECKSUMS:
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: 56eb8574f451e5548f02f0e7c853c20ad9f4f150
+PODFILE CHECKSUM: 3f28ee83dd9a05b9f76c6600c327703fc5cf1c25
 
 COCOAPODS: 1.11.2
