@@ -21,9 +21,11 @@ extension Container{
     
     private func registerVC(){
         autoregister(BeerListVC.self, initializer: BeerListVC.init)
+        autoregister(DetailBeerVC.self, initializer: DetailBeerVC.init)
     }
     private func registerReactor(){
         autoregister(BeerListReactor.self, initializer: BeerListReactor.init)
+        autoregister(DetailBeerReactor.self, initializer: DetailBeerReactor.init)
     }
     private func registerFlow(){
         autoregister(BeerListFlow.self, initializer: BeerListFlow.init)

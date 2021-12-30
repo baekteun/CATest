@@ -32,7 +32,11 @@ final class DetailBeerReactor: Reactor, Stepper{
 // MARK: - Mutate
 extension DetailBeerReactor{
     func mutate(action: Action) -> Observable<Mutation> {
-        
+        switch action{
+            
+            
+        }
+        return .empty()
     }
 }
 

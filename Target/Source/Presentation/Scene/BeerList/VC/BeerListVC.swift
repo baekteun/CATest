@@ -48,6 +48,11 @@ final class BeerListVC: baseVC<BeerListReactor>{
             .map { _ in Reactor.Action.refreshTrigger }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+        
+        tableView.rx.modelSelected(Beer.self)
+            .map { Reactor.Action.beerDetailDidTap($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
     override func bindState(reactor: BeerListReactor) {
         let sharedState = reactor.state.share(replay: 1).observe(on: MainScheduler.asyncInstance)

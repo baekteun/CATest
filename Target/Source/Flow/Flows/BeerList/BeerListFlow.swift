@@ -35,6 +35,8 @@ final class BeerListFlow: Flow{
         switch step{
         case .beerListIsRequired:
             return coordinateToBeerList()
+        case let .beerDetailIsRequired(beer):
+            return navigateToBeerDetail(beer: beer)
         case let .alert(title, message):
             return navigateToAlert(title: title, message: message)
         default:
@@ -52,5 +54,10 @@ private extension BeerListFlow{
     func navigateToAlert(title: String?, message: String?) -> FlowContributors{
         self.rootVC.showDefaultAlert(title: title, message: message)
         return .none
+    }
+    func navigateToBeerDetail(beer: Beer) -> FlowContributors{
+        let vc = DetailBeerVC(beer: beer)
+        self.rootVC.pushViewController(vc, animated: true)
+        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: reactor))
     }
 }
