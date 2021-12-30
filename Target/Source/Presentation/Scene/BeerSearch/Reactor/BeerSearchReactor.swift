@@ -17,6 +17,8 @@ final class BeerSearchReactor: Reactor, Stepper{
     
     private let disposeBag = DisposeBag()
     
+    @Inject private var beerSearchUseCase: SearchBeerUseCase
+    
     // MARK: - Reactor
     enum Action{
         case searchBeer(Int)
@@ -66,7 +68,11 @@ extension BeerSearchReactor{
 private extension BeerSearchReactor{
     func searchBeer(id: Int) -> Observable<Mutation>{
         let startLoading: Observable<Mutation> = .just(.setLoading(true))
-        let beer: Observable<Mutation> = .empty()
+        let beer: Observable<Mutation> = beerSearchUseCase.execute(id: id)
+            .asObservable()
+            .debug()
+            .map { return .setBeer($0) }
+            .catch { return .just(.setError($0)) }
         let endLoading: Observable<Mutation> = .just(.setLoading(false))
         return .concat([startLoading, beer, endLoading])
     }

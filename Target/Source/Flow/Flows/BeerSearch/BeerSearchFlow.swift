@@ -37,6 +37,8 @@ final class BeerSearchFlow: Flow{
         switch step{
         case .beerIDSearchIsRequired:
             return coordinateToBeerSearch()
+        case let .alert(title, message):
+            return navigateToAlert(title: title, message: message)
         default:
             return .none
         }
@@ -48,5 +50,9 @@ private extension BeerSearchFlow{
     func coordinateToBeerSearch() -> FlowContributors{
         self.rootVC.setViewControllers([vc], animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: vc.reactor))
+    }
+    func navigateToAlert(title: String?, message: String?) -> FlowContributors{
+        self.rootVC.showDefaultAlert(title: title, message: message)
+        return .none
     }
 }

@@ -9,7 +9,7 @@
 import RxSwift
 
 final class DefaultSearchBeerRepository: SearchBeerRepository{
-    func getBeer(id: Int) -> Single<Beer> {
-        return NetworkManager.shared.request(api: .getBeer(id: id), dto: Beer.self)
+    func getBeer(id: Int) -> Single<[Beer]> {
+        return NetworkManager.shared.request(api: .getBeer(id: id), dto: [Beer].self)
     }
 }

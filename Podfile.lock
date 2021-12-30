@@ -49,7 +49,7 @@ DEPENDENCIES:
   - RxDataSources (~> 5.0)
   - RxFlow (~> 2.12.4)
   - RxSwift (~> 6.2.0)
-  - RxSwiftExt
+  - RxSwiftExt (~> 6.0.1)
   - RxViewController (~> 2.0.0)
   - SnapKit (~> 5.0.0)
   - Swinject (~> 2.7)
@@ -95,6 +95,6 @@ SPEC CHECKSUMS:
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: 3f28ee83dd9a05b9f76c6600c327703fc5cf1c25
+PODFILE CHECKSUM: 9d506f4e15b511a5f9a6ca004b1b3f7fddd48fce
 
 COCOAPODS: 1.11.2

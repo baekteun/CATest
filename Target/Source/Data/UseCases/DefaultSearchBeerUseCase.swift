@@ -13,6 +13,6 @@ final class DefaultSearchBeerUseCase: SearchBeerUseCase{
     @Inject private var searchBeerRepository: SearchBeerRepository
     
     func execute(id: Int) -> Single<Beer> {
-        return searchBeerRepository.getBeer(id: id)
+        return searchBeerRepository.getBeer(id: id).compactMap(\.first).asObservable().asSingle()
     }
 }

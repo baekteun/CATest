@@ -9,5 +9,5 @@
 import RxSwift
 
 protocol SearchBeerRepository{
-    func getBeer(id: Int) -> Single<Beer>
+    func getBeer(id: Int) -> Single<[Beer]>
 }

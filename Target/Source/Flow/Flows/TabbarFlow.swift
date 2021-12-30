@@ -14,6 +14,7 @@ final class TabbarFlow: Flow{
     }
     
     @Inject private var beerListFlow: BeerListFlow
+    @Inject private var beerSearchFlow: BeerSearchFlow
     
     private let rootVC: UITabBarController = .init()
     
@@ -39,20 +40,25 @@ final class TabbarFlow: Flow{
 private extension TabbarFlow{
     func coordinateToTabbar() -> FlowContributors{
         Flows.use(
-            beerListFlow,
+            beerListFlow, beerSearchFlow,
             when: .created
-        ) { [unowned self] (root1: UINavigationController) in
+        ) { [unowned self] (root1: UINavigationController,
+                            root2: UINavigationController) in
             let beerListImage = UIImage(systemName: "1.circle")
+            let beerSearchImage = UIImage(systemName: "2.circle")
             
             let beerListItem = UITabBarItem(title: "List", image: beerListImage, tag: 0)
+            let beerSearchItem = UITabBarItem(title: "Search", image: beerSearchImage, tag: 1)
             
             root1.tabBarItem = beerListItem
+            root2.tabBarItem = beerSearchItem
             
-            self.rootVC.setViewControllers([root1], animated: true)
+            self.rootVC.setViewControllers([root1, root2], animated: true)
         }
         
         return .multiple(flowContributors: [
-            .contribute(withNextPresentable: beerListFlow, withNextStepper: beerListFlow.stepper)
+            .contribute(withNextPresentable: beerListFlow, withNextStepper: beerListFlow.stepper),
+            .contribute(withNextPresentable: beerSearchFlow, withNextStepper: beerSearchFlow.stepper)
         ])
     }
 }
