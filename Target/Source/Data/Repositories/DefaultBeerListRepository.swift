@@ -10,8 +10,7 @@ import RxSwift
 
 final class DefaultBeerListRepository: BeerListRepository{
     func getBeerList(page: Int) -> Single<[Beer]> {
-        return NetworkManager.shared.request(api: .getBeerList(page: page), dto: [Beer].self
-        )
+        return NetworkManager.shared.request(api: .getBeerList(page: page), dto: [Beer].self)
     }
     
     
