@@ -22,13 +22,16 @@ extension Container{
     private func registerVC(){
         autoregister(BeerListVC.self, initializer: BeerListVC.init)
         autoregister(DetailBeerVC.self, initializer: DetailBeerVC.init)
+        autoregister(BeerSearchVC.self, initializer: BeerSearchVC.init)
     }
     private func registerReactor(){
         autoregister(BeerListReactor.self, initializer: BeerListReactor.init)
         autoregister(DetailBeerReactor.self, initializer: DetailBeerReactor.init)
+        autoregister(BeerSearchReactor.self, initializer: BeerSearchReactor.init)
     }
     private func registerFlow(){
         autoregister(BeerListFlow.self, initializer: BeerListFlow.init)
+        autoregister(BeerSearchFlow.self, initializer: BeerSearchFlow.init)
     }
     private func registerStepper(){
         autoregister(BeerListStepper.self, initializer: BeerListStepper.init)

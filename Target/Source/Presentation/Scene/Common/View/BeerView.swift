@@ -15,6 +15,9 @@ final class BeerView: UIView{
     // MARK: - Properties
     private let beerImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFit
+        $0.snp.makeConstraints {
+            $0.width.height.equalTo(200)
+        }
     }
     
     private let beerIDLabel = UILabel().then {
@@ -42,7 +45,7 @@ final class BeerView: UIView{
         beerStack.addArrangeSubviews([beerImageView, beerIDLabel, beerNameLabel, beerDescriptionLabel])
         addSubview(beerStack)
         beerStack.snp.makeConstraints {
-            $0.top.leading.bottom.trailing.equalToSuperview().inset(5)
+            $0.top.leading.trailing.equalToSuperview().inset(5)
         }
     }
     
