@@ -70,7 +70,6 @@ private extension BeerSearchReactor{
         let startLoading: Observable<Mutation> = .just(.setLoading(true))
         let beer: Observable<Mutation> = beerSearchUseCase.execute(id: id)
             .asObservable()
-            .debug()
             .map { return .setBeer($0) }
             .catch { return .just(.setError($0)) }
         let endLoading: Observable<Mutation> = .just(.setLoading(false))
