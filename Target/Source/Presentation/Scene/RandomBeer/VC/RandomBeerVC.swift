@@ -24,7 +24,7 @@ final class RandomBeerVC: baseVC<RandomBeerReactor>{
     }
     override func setLayout() {
         beerView.snp.makeConstraints {
-            $0.top.equalTo(view.layoutMargins)
+            $0.top.equalTo(view.layoutMarginsGuide)
             $0.size.equalToSuperview()
         }
         activityIndicator.snp.makeConstraints {

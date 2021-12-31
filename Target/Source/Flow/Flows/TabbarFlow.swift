@@ -58,7 +58,7 @@ private extension TabbarFlow{
             root2.tabBarItem = beerSearchItem
             root3.tabBarItem = randomBeerItem
             
-            self.rootVC.setViewControllers([root1, root2], animated: true)
+            self.rootVC.setViewControllers([root1, root2, root3], animated: true)
         }
         
         return .multiple(flowContributors: [

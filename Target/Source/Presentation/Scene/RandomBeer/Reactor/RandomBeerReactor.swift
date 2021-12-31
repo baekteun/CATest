@@ -41,7 +41,7 @@ extension RandomBeerReactor{
     func mutate(action: Action) -> Observable<Mutation> {
         switch action{
         case .viewDidAppear:
-            return .empty()
+            return viewDidAppear()
         }
     }
 }
