@@ -6,4 +6,8 @@
 //  Copyright © 2021 baegteun. All rights reserved.
 //
 
-import Foundation
+import RxSwift
+
+protocol RandomBeerUsecase{
+    func execute() -> Single<Beer>
+}

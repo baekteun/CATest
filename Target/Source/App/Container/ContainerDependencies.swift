@@ -23,11 +23,13 @@ extension Container{
         autoregister(BeerListVC.self, initializer: BeerListVC.init)
         autoregister(DetailBeerVC.self, initializer: DetailBeerVC.init)
         autoregister(BeerSearchVC.self, initializer: BeerSearchVC.init)
+        autoregister(RandomBeerVC.self, initializer: RandomBeerVC.init)
     }
     private func registerReactor(){
         autoregister(BeerListReactor.self, initializer: BeerListReactor.init)
         autoregister(DetailBeerReactor.self, initializer: DetailBeerReactor.init)
         autoregister(BeerSearchReactor.self, initializer: BeerSearchReactor.init)
+        autoregister(RandomBeerReactor.self, initializer: RandomBeerReactor.init)
     }
     private func registerFlow(){
         autoregister(BeerListFlow.self, initializer: BeerListFlow.init)
@@ -36,10 +38,12 @@ extension Container{
     private func registerStepper(){
         autoregister(BeerListStepper.self, initializer: BeerListStepper.init)
         autoregister(BeerSearchStepper.self, initializer: BeerSearchStepper.init)
+        
     }
     private func registerRepository(){
         autoregister(BeerListRepository.self, initializer: DefaultBeerListRepository.init)
         autoregister(SearchBeerRepository.self, initializer: DefaultSearchBeerRepository.init)
+        autoregister(DefaultRandomBeerRepository.self, initializer: DefaultRandomBeerRepository.init)
     }
     private func registerUsecase(){
         autoregister(BeerListUseCase.self, initializer: DefaultBeerListUseCase.init)

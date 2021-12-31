@@ -6,4 +6,12 @@
 //  Copyright © 2021 baegteun. All rights reserved.
 //
 
-import Foundation
+import RxSwift
+
+final class DefaultRandomBeerUseCase: RandomBeerUsecase{
+    @Inject private var randomBeerRepository: RandomBeerRepository
+    func execute() -> Single<Beer> {
+        return randomBeerRepository.getRandomBeer().compactMap(\.first).asObservable()
+            .asSingle()
+    }
+}
