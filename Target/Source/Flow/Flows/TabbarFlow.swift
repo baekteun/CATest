@@ -64,7 +64,7 @@ private extension TabbarFlow{
         return .multiple(flowContributors: [
             .contribute(withNextPresentable: beerListFlow, withNextStepper: beerListFlow.stepper),
             .contribute(withNextPresentable: beerSearchFlow, withNextStepper: beerSearchFlow.stepper),
-            .contribute(withNextPresentable: randomBeerFlow, withNextStepper: randomBeerFlow.stepper)gi
+            .contribute(withNextPresentable: randomBeerFlow, withNextStepper: randomBeerFlow.stepper)
         ])
     }
 }
