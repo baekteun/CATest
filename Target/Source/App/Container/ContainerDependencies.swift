@@ -44,7 +44,7 @@ extension Container{
     private func registerRepository(){
         autoregister(BeerListRepository.self, initializer: DefaultBeerListRepository.init)
         autoregister(SearchBeerRepository.self, initializer: DefaultSearchBeerRepository.init)
-        autoregister(DefaultRandomBeerRepository.self, initializer: DefaultRandomBeerRepository.init)
+        autoregister(RandomBeerRepository.self, initializer: DefaultRandomBeerRepository.init)
     }
     private func registerUsecase(){
         autoregister(BeerListUseCase.self, initializer: DefaultBeerListUseCase.init)
