@@ -17,6 +17,8 @@ final class RandomBeerReactor: Reactor, Stepper{
     
     private let disposeBag = DisposeBag()
     
+    @Inject private var randomBeerUseCase: RandomBeerUsecase
+    
     // MARK: - Reactor
     enum Action{
         case viewDidAppear
@@ -63,7 +65,10 @@ extension RandomBeerReactor{
 private extension RandomBeerReactor{
     func viewDidAppear() -> Observable<Mutation>{
         let start = Observable<Mutation>.just(.setIsLoading(true))
-        let req = Observable<Mutation>.empty()
+        let req: Observable<Mutation> = randomBeerUseCase
+            .execute()
+            .asObservable()
+            .map{ .setBeer($0) }
         let end = Observable<Mutation>.just(.setIsLoading(false))
         
         return .concat([start,req,end])
