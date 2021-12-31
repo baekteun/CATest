@@ -38,7 +38,7 @@ extension Container{
     private func registerStepper(){
         autoregister(BeerListStepper.self, initializer: BeerListStepper.init)
         autoregister(BeerSearchStepper.self, initializer: BeerSearchStepper.init)
-        
+        autoregister(RandomBeerStepper.self, initializer: RandomBeerStepper.init)
     }
     private func registerRepository(){
         autoregister(BeerListRepository.self, initializer: DefaultBeerListRepository.init)
