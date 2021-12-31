@@ -48,5 +48,6 @@ extension Container{
     private func registerUsecase(){
         autoregister(BeerListUseCase.self, initializer: DefaultBeerListUseCase.init)
         autoregister(SearchBeerUseCase.self, initializer: DefaultSearchBeerUseCase.init)
+        autoregister(RandomBeerUsecase.self, initializer: DefaultRandomBeerUseCase.init)
     }
 }
