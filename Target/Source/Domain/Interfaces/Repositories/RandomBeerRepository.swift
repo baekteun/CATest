@@ -6,4 +6,9 @@
 //  Copyright © 2021 baegteun. All rights reserved.
 //
 
-import Foundation
+import Moya
+import RxSwift
+
+protocol RandomBeerRepository{
+    func getRandomBeer() -> Single<[Beer]>
+}
