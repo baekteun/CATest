@@ -34,6 +34,7 @@ extension Container{
     private func registerFlow(){
         autoregister(BeerListFlow.self, initializer: BeerListFlow.init)
         autoregister(BeerSearchFlow.self, initializer: BeerSearchFlow.init)
+        autoregister(RandomBeerFlow.self, initializer: RandomBeerFlow.init)
     }
     private func registerStepper(){
         autoregister(BeerListStepper.self, initializer: BeerListStepper.init)
