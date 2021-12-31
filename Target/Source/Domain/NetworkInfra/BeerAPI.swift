@@ -3,6 +3,7 @@ import Moya
 enum BeerAPI{
     case getBeerList(page: Int)
     case getBeer(id: Int)
+    case getRandomBeer
 }
 
 extension BeerAPI: TargetType{
@@ -16,12 +17,14 @@ extension BeerAPI: TargetType{
             return "/beers"
         case let .getBeer(id):
             return "/beers/\(id)"
+        case .getRandomBeer:
+            return "/beers/random"
         }
     }
     
     var method: Method {
         switch self{
-        case .getBeerList, .getBeer:
+        case .getBeerList, .getBeer, .getRandomBeer:
             return .get
         }
     }
@@ -36,7 +39,7 @@ extension BeerAPI: TargetType{
             return .requestParameters(parameters: [
                 "page" : page
             ], encoding: URLEncoding.queryString)
-        case .getBeer:
+        case .getBeer, .getRandomBeer:
             return .requestPlain
         }
     }
