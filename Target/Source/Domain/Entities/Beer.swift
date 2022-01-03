@@ -1,6 +1,6 @@
 
 
-struct Beer: Codable{
+struct Beer: Codable, Equatable{
     let id: Int
     let name: String
     let description: String

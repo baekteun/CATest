@@ -12,4 +12,15 @@ import Foundation
 final class TestDI{
     static let shared = TestDI()
     
+    func getBeerListReactor() -> BeerListReactor {
+        return BeerListReactor()
+    }
+    
+    func getSearchBeerReactor() -> BeerSearchReactor {
+        return BeerSearchReactor()
+    }
+    
+    func getRandomBeerReactor() -> RandomBeerReactor {
+        return RandomBeerReactor()
+    }
 }
