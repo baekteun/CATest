@@ -17,16 +17,16 @@ class BeerListTest: XCTestCase {
     
     let disposeBag: DisposeBag = .init()
     
-    func test_Reactor_viewDidLoad() {
+    func test_Reactor_ViewDidLoad() {
         let beerJson = Bundle.getBeerFromJson(.getBeerList(page: 1))
         
         let reactor = BeerListReactor()
         
         reactor.action.onNext(.viewDidLoad)
-        reactor.action.onNext(.refreshTrigger)
         
-        XCTAssertEqual("Asd", "Asd")
-    
+        print(reactor.currentState.beers)
+        XCTAssertEqual(reactor.currentState.beers, beerJson)
+        
 
     }
     
